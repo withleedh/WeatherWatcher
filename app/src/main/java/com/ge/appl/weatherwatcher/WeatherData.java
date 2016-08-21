@@ -12,6 +12,15 @@ public class WeatherData {
     private String mMonthDay;
     private String mWeather;
     private String mTemperature;
+    private String mCity;
+
+    public String getCity() {
+        return mCity;
+    }
+
+    public void setCity(String city) {
+        mCity = city;
+    }
 
     public Drawable getWeatherImage() {
         return mWeatherImage;

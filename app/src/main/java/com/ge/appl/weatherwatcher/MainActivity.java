@@ -1,8 +1,10 @@
 package com.ge.appl.weatherwatcher;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -84,6 +86,24 @@ public class MainActivity extends AppCompatActivity {
 
             return view;
         }
+    }
+
+    class WeatherAsyncTask extends AsyncTask<String, Void, Weather>{
+
+        @Override
+        public Weather doInBackground(String... params) {
+            WeatherClient client = new WeatherClient();
+
+            String city = params[0];
+
+            // call API
+            Weather weather = client.getWeather(city);
+
+            Log.d("WeatherAsyncTask", "doInBackground: "+ weather.getTemperature());
+
+            return weather;
+        }
+
     }
 }
 
